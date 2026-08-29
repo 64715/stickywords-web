@@ -36,8 +36,8 @@ aspect ratio either way, so the page does not shift when a real image arrives.
 
 ## Replacing the logo
 
-`assets/img/favicon.svg` is a placeholder drawn in this repo. Swap it for the licensed
-Freepik note mark (keeping the filename, or updating the three references to it in
+`assets/img/favicon.svg` is a placeholder drawn in this repo. Swap it for the real
+StickyWords note mark (keeping the filename, or updating the three references to it in
 `index.html`, `privacy/index.html` and `404.html`).
 
 ## Publishing a download

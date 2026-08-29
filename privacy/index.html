@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — StickyWords 3</title>
+<meta name="description" content="What StickyWords 3 stores, where it stores it, and why none of it leaves your computer.">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14120e" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Privacy policy — StickyWords 3">
+<meta property="og:description" content="What StickyWords 3 stores, where it stores it, and why none of it leaves your computer.">
+<meta property="og:url" content="https://stickywords.firstpush.dev/privacy/">
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arrow-left" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5 5 8l4.5 4.5"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <img class="mark" src="../assets/img/favicon.svg" alt="" width="26" height="26">
+      StickyWords
+    </a>
+    <nav class="site-nav">
+      <a class="opt-sm" href="../#features">Features</a>
+      <a class="opt" href="../#lists">Word lists</a>
+      <a href="../#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <a class="back-link" href="../">
+      <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+      Back to StickyWords
+    </a>
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated 29 August 2026 · Applies to StickyWords 3.0.0 for Windows
+      and to this website.</p>
+  </div>
+
+  <section style="padding-top:26px">
+    <div class="wrap prose">
+
+      <div class="callout">
+        <p><strong>The short version.</strong> StickyWords has no account, no sign-up, no cloud,
+          no sync, no telemetry, no analytics, no crash reporting and no advertising. It makes no
+          network connections of its own. Nothing you type into it and nothing it records about
+          your studying ever leaves your computer, because there is nowhere for it to go.</p>
+      </div>
+
+      <p>This policy describes what the program does today, in the version named above. It is
+        written in the present tense on purpose: it states current behaviour rather than
+        intentions. If a later version changes any of this, the policy changes with it, before
+        that version ships.</p>
+
+      <nav class="toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#stores">What the app stores</a></li>
+          <li><a href="#lists">Your word lists</a></li>
+          <li><a href="#registry">The Windows registry</a></li>
+          <li><a href="#speech">Pronunciation</a></li>
+          <li><a href="#network">Network connections</a></li>
+          <li><a href="#not-collected">What is not collected</a></li>
+          <li><a href="#sharing">Sharing and selling</a></li>
+          <li><a href="#deleting">Deleting your data</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#website">This website</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes and contact</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="stores">What the app stores, and where</h2>
+      <p>Everything StickyWords remembers between runs lives in three files in your own Windows
+        user profile, under <code>%APPDATA%\StickyWords\</code>. They are ordinary files on your
+        disk. You can open them, copy them, back them up or delete them at any time, and nothing
+        needs the app's permission.</p>
+
+      <div class="scroll">
+        <table>
+          <thead><tr><th>File</th><th>What it holds</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>settings.json</code></td>
+              <td>Your display preferences: where the note sits on screen, its opacity and
+                colour scheme, the file path of the last word list you had open, and the
+                handful of settings that have no menu entry.</td>
+            </tr>
+            <tr>
+              <td><code>statistics.json</code></td>
+              <td>How many times each word has been shown to you, accumulated across every
+                session. Entries are keyed so that fixing a typo in a word does not orphan its
+                history. These are counts attached to your own words — no timestamps of your
+                activity, and nothing about you.</td>
+            </tr>
+            <tr>
+              <td><code>StickyWords.log</code></td>
+              <td>A diagnostic log, so that if something misbehaves there is a record to look
+                at. It rotates into <code>StickyWords.log.1</code> once it reaches 1 MiB. It
+                stays on your disk; it is never uploaded, and there is no button that sends it
+                anywhere.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="lists">Your word lists</h2>
+      <p>Word lists are <code>.sws</code> files that you create and save wherever you choose —
+        a documents folder, a USB stick, a synced folder if that is what you want. StickyWords
+        reads and writes the file you point it at and does nothing else with it. Fields it does
+        not recognise are preserved and written back untouched.</p>
+      <p>A list is plain JSON, small enough to read and to email to someone else. That is a
+        deliberate property of the format: the list is yours, and it is portable without the
+        app's help.</p>
+
+      <h2 id="registry">The Windows registry</h2>
+      <p>StickyWords writes one registry value, and only while <em>Start with Windows</em> is
+        switched on in the Options menu: a standard entry under the current user's
+        <code>Run</code> key, so that Windows launches the note at sign-in. Switching the option
+        off removes the entry. Nothing else in the registry is written or read.</p>
+
+      <h2 id="speech">Pronunciation</h2>
+      <p>When you press Pronounce, the word is spoken by SAPI 5 using a voice that is already
+        installed on your PC. The audio is synthesised locally, by Windows, on your own machine.
+        No text — not the word, not its meaning, not the language of the list — is sent to any
+        server in order to be spoken.</p>
+      <p>If no installed voice can speak the list's language, the button does not simply fail:
+        it turns into an install icon and opens the Speech page of Windows Settings, where you
+        can add a voice. That opens a local Windows settings page; StickyWords is not involved
+        in whatever you do there, and Microsoft's own terms and privacy statement govern any
+        voice you choose to download.</p>
+      <div class="callout">
+        <p><strong>Online voices are not available in this version.</strong> All speech is
+          local. A future release may add optional online voices from a third-party provider —
+          Microsoft or ElevenLabs, for example — which would work by sending the text to be
+          spoken to that provider. If that happens, the feature will be off unless you turn it
+          on, the provider will be named where you turn it on, and this policy will be updated
+          to describe it before that version is released.</p>
+      </div>
+
+      <h2 id="network">Network connections</h2>
+      <p>StickyWords opens no network connections. It does not check for updates, does not
+        phone home, does not fetch content and does not report errors. You can run it on a
+        machine that has never been online, and nothing about it degrades.</p>
+      <p>Two actions deliberately hand off to other software on your computer: the Pronounce
+        button opens Windows' Speech settings when a voice is missing, and the About box opens
+        this website in your default browser. In both cases StickyWords asks Windows to open
+        something and then plays no further part.</p>
+
+      <h2 id="not-collected">What is not collected</h2>
+      <p>To be explicit, StickyWords does not collect, generate or transmit any of the
+        following:</p>
+      <ul>
+        <li>Names, email addresses, accounts or licence keys — there is no sign-up of any kind.</li>
+        <li>Usage analytics, event tracking, feature-usage metrics or session recording.</li>
+        <li>Crash reports or automatic diagnostics.</li>
+        <li>Device identifiers, advertising identifiers, IP addresses or location.</li>
+        <li>Your word lists, your words, or the statistics kept about them.</li>
+        <li>Anything at all about other programs, files or windows on your computer.</li>
+      </ul>
+      <p>There are no cookies, no third-party SDKs and no advertising libraries in the
+        application.</p>
+
+      <h2 id="sharing">Sharing and selling</h2>
+      <p>Your data is not shared with anyone, sold to anyone, or used to train anything. This is
+        not a promise about restraint — it is a consequence of the design. Nothing is collected,
+        so there is no store of data anywhere for me or for anyone else to share, sell or be
+        compelled to hand over.</p>
+
+      <h2 id="deleting">Deleting your data</h2>
+      <p>Delete the folder <code>%APPDATA%\StickyWords\</code> and any <code>.sws</code> files
+        you have saved. That is everything StickyWords has ever written, and once it is gone it
+        is gone: there is no server-side copy, no backup held by me, and nothing to request the
+        deletion of. Uninstalling removes the program; the folder is left behind so that an
+        uninstall does not silently destroy your settings and statistics, which is why deleting
+        it is a separate step.</p>
+
+      <h2 id="rights">Your rights</h2>
+      <p>Data-protection law gives you rights to access, correct, export and erase personal data
+        that an organisation holds about you. In the case of StickyWords there is nothing held:
+        no personal data is transmitted or stored anywhere outside your own computer, so there
+        is no account to access, no record to correct and no database entry to erase. Those
+        actions are file operations you carry out yourself, on files you already own and can
+        read.</p>
+      <p>Should a future version ever process personal data off your device, this policy will
+        say so plainly and name who processes it, before that version is released.</p>
+
+      <h2 id="website">This website</h2>
+      <p>This site is a set of static pages hosted on GitHub Pages. It sets no cookies, runs no
+        analytics, and loads no third-party fonts, scripts, images or trackers — every file the
+        page requests comes from this domain. Nothing you do here is recorded by me.</p>
+      <p>GitHub serves the pages, and in the course of doing so its servers process technical
+        information such as your IP address and browser user agent, as any web server must.
+        That processing is GitHub's, described in the
+        <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement">GitHub
+        Privacy Statement</a> and the
+        <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">general
+        privacy statement</a>. I have no access to those logs.</p>
+      <p>The download link points to a release file hosted on GitHub; following it is a request
+        to GitHub, on the same terms. The Microsoft Store link, once it is live, will take you
+        to Microsoft, whose own privacy statement applies from that point on.</p>
+
+      <h2 id="children">Children</h2>
+      <p>StickyWords is suitable for learners of any age and collects nothing from anyone,
+        children included. Because no personal data is gathered at all, there is no age gate and
+        no parental-consent mechanism — there would be nothing for either to protect.</p>
+
+      <h2 id="changes">Changes to this policy, and how to reach me</h2>
+      <p>If the behaviour described here changes, this page changes with it and the date at the
+        top is updated. Material changes — anything that would cause data to leave your computer
+        — will be described in the release notes of the version that introduces them, and the
+        feature will be off until you switch it on.</p>
+      <!-- TODO: replace with a contact email address if you would rather have one here. -->
+      <p>Questions about this policy, or about anything StickyWords does with your data, can be
+        raised at the
+        <a href="https://github.com/64715/stickywords-web/issues">project's issue tracker</a>.</p>
+
+      <p class="updated" style="margin-top:34px">StickyWords 3.0.0, by Gytis Liutkus.</p>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <p>StickyWords 3.0.0, by Gytis Liutkus.</p>
+      <p class="foot-credit">The note mark is licensed from Freepik under their premium terms.</p>
+    </div>
+    <nav class="foot-links">
+      <a href="../#features">Features</a>
+      <a href="../#download">Download</a>
+      <a href="./">Privacy</a>
+      <a href="https://github.com/64715/stickywords-web">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

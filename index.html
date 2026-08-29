@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StickyWords 3 — a small note that quietly teaches you words</title>
+<meta name="description" content="An always-on-top note for the Windows desktop that cycles through the words you are learning and, on request, says them out loud. Your own lists, your own files. No account, no cloud, no telemetry.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/site.css">
+<meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14120e" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="StickyWords 3">
+<meta property="og:description" content="A small always-on-top note for the Windows desktop that quietly cycles through the words you are learning — and, on request, says them out loud.">
+<meta property="og:url" content="https://stickywords.firstpush.dev/">
+<!-- TODO: add a 1200x630 social card at assets/img/og.png, then uncomment:
+<meta property="og:image" content="https://stickywords.firstpush.dev/assets/img/og.png"> -->
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<!-- icon sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-pause" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 3.5v9M10 3.5v9"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 16 16" fill="currentColor" stroke="none"><path d="M10.5 3.8v8.4L4.8 8z"/></symbol>
+  <symbol id="i-speak" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 3.2 5.2 6H3v4h2.2l3.3 2.8z"/><path d="M11 6.2a2.6 2.6 0 0 1 0 3.6"/></symbol>
+  <symbol id="i-off" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="4.6"/><path d="M4.7 11.3 11.3 4.7"/></symbol>
+  <symbol id="i-list" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3.5 5h9M3.5 8h9M3.5 11h9"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7.2" width="8" height="5.6" rx="1.2"/><path d="M6 7.2V5.9a2 2 0 0 1 4 0v1.3"/></symbol>
+  <symbol id="i-info" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="5.2"/><path d="M8 7.6v3"/><path d="M8 5.3v.2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></symbol>
+  <symbol id="i-note" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3.6h10v6.2L9.8 13H3z"/><path d="M13 9.8H9.8V13"/><path d="M5.6 6.4h4.8M5.6 8.6h3"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="3.4" width="10.8" height="9.2" rx="1.2"/><path d="M2.6 6.6h10.8M6.4 6.6v6"/></symbol>
+  <symbol id="i-desktop" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.4" y="3.2" width="11.2" height="7.4" rx="1.2"/><path d="M6 13.2h4M8 10.6v2.6"/></symbol>
+  <symbol id="i-store" viewBox="0 0 16 16" fill="currentColor" stroke="none"><path d="M3 3.2h4.2v4.2H3zM8.8 3.2H13v4.2H8.8zM3 8.6h4.2v4.2H3zM8.8 8.6H13v4.2H8.8z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.6v7.6M4.8 7.4 8 10.6l3.2-3.2M3 13h10"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5 5 8l4.5 4.5"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <!-- PLACEHOLDER MARK — replace assets/img/favicon.svg with the licensed note mark -->
+      <img class="mark" src="assets/img/favicon.svg" alt="" width="26" height="26">
+      StickyWords
+    </a>
+    <nav class="site-nav">
+      <a class="opt-sm" href="#features">Features</a>
+      <a class="opt" href="#lists">Word lists</a>
+      <a class="opt" href="privacy/">Privacy</a>
+      <a href="#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ hero ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="version-pill">Version 3.0.0 · Windows</p>
+        <h1>The words you are learning, on the screen you are already looking at.</h1>
+        <p class="lede">A small always-on-top note for the Windows desktop that quietly
+          cycles through the words you are learning — and, on request, says them out loud.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://github.com/64715/stickywords-web/releases/latest">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-download"/></svg>
+            Download for Windows
+          </a>
+          <!-- TODO: paste the Microsoft Store listing URL into href, then delete
+               aria-disabled and the is-pending class to switch the button on. -->
+          <a class="btn btn-secondary is-pending" href="#" aria-disabled="true">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-store"/></svg>
+            Microsoft Store
+          </a>
+        </div>
+        <p class="btn-note">Windows 10 or 11. No account, no cloud, no telemetry.<br>
+          The Microsoft&nbsp;Store listing is on its way.</p>
+      </div>
+
+      <!-- the note, cycling -->
+      <div class="desk">
+        <div class="note-stage" data-note-demo data-swapping="0">
+          <div class="note">
+            <div class="note-bar" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><use href="#i-pause"/></svg>
+              <svg viewBox="0 0 16 16"><use href="#i-prev"/></svg>
+              <svg viewBox="0 0 16 16"><use href="#i-speak"/></svg>
+              <svg viewBox="0 0 16 16"><use href="#i-off"/></svg>
+              <svg viewBox="0 0 16 16"><use href="#i-list"/></svg>
+              <svg viewBox="0 0 16 16"><use href="#i-lock"/></svg>
+              <svg viewBox="0 0 16 16"><use href="#i-info"/></svg>
+              <svg viewBox="0 0 16 16"><use href="#i-close"/></svg>
+            </div>
+            <div class="note-body">
+              <div class="w-word">¡Buenos días!</div>
+              <div class="w-pron">[BWAY-nos DEE-as]</div>
+              <div class="w-mean">Good morning!</div>
+            </div>
+          </div>
+        </div>
+        <p class="desk-caption">247 × 103 px, translucent — hover it for the toolbar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ premise ============ -->
+  <section class="premise">
+    <div class="wrap">
+      <p class="eyebrow">The premise</p>
+      <p class="big">Ambient exposure rather than deliberate study.</p>
+      <p class="lede center">There is no session to start, nothing to grade and no streak to keep.
+        The note occupies a corner of a screen you are already looking at for other reasons,
+        and shows the next word every few seconds while you work.</p>
+      <p class="lede center" style="margin-top:1em">That premise drives every interface decision: the window has no title bar,
+        its toolbar appears only on hover, and the rotation pauses by itself when the pointer
+        comes near — so a word never changes out from under you mid-read.</p>
+    </div>
+  </section>
+
+  <!-- ============ features ============ -->
+  <section id="features">
+    <div class="wrap">
+      <p class="eyebrow">What it does</p>
+      <h2>Small enough to ignore, present enough to work.</h2>
+      <p class="lede">StickyWords ships no curriculum. It drills the list you built from a class,
+        a novel, a job or an exam.</p>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-head">
+            <svg aria-hidden="true"><use href="#i-note"/></svg>
+            <h3>The note</h3>
+          </div>
+          <dl>
+            <dt>Frameless, always on top, translucent</dt>
+            <dd>Five opacity steps from 100 % down to 20 %, kept off the taskbar and out of
+              Alt-Tab so it stays clear of real work.</dd>
+
+            <dt>Timed rotation</dt>
+            <dd>A word holds for 1, 2, 3, 5, 8 or 13 seconds, in list order or at random,
+              drawing only from the words still active.</dd>
+
+            <dt>Two-stage reveal</dt>
+            <dd>The word can appear alone first, its meaning following halfway through its
+              turn — the closest the app comes to testing recall. <em>Meaning first</em>
+              inverts the prompt, so you recall the foreign word rather than read it.</dd>
+
+            <dt>Retiring a word</dt>
+            <dd>One click deactivates whatever is showing and writes the file immediately.
+              The word stays in the list but leaves the rotation.</dd>
+
+            <dt>Drag with edge snap</dt>
+            <dd>The note snaps to the edges of the work area, is clamped back on screen if a
+              monitor disappears, remembers where you left it, and locks in place against an
+              accidental nudge.</dd>
+
+            <dt>Three colour schemes</dt>
+            <dd>Amber, Mint and Slate, applied across every screen, menu and dialog.</dd>
+          </dl>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <svg aria-hidden="true"><use href="#i-speak"/></svg>
+            <h3>Pronunciation</h3>
+          </div>
+          <dl>
+            <dt>The voices already on your PC</dt>
+            <dd>Speech comes from SAPI 5, reading <em>both</em> voice registries — so the voices
+              Windows Settings installs are found alongside the classic ones. Nothing is
+              synthesised anywhere but on your own machine.</dd>
+
+            <dt>A missing voice is an offer, not a dead button</dt>
+            <dd>When nothing on the machine can say the list's language, the Pronounce button
+              becomes an install icon and opens Windows' Speech settings directly. It switches
+              back the moment the app detects the new voice.</dd>
+
+            <dt>Three states in one button slot</dt>
+            <dd>It speaks when a voice matches the list's language; it points at the Windows
+              voice installer when nothing can; it greys out only when there is no word on
+              screen to say.</dd>
+
+            <dt>184 languages to label a list with</dt>
+            <dd>Not only the ones your machine can already speak — the point is often to
+              install that voice next. The picker marks which is which.</dd>
+          </dl>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <svg aria-hidden="true"><use href="#i-grid"/></svg>
+            <h3>Word lists</h3>
+          </div>
+          <dl>
+            <dt>An editable grid</dt>
+            <dd>Number, word, pronunciation, meaning and an Active box per row, all edited in
+              place, with a filter box for finding a row in a long list. Tab steps from cell to
+              cell and Enter on the last row starts another, so a list can be typed straight
+              through without the hand leaving the keyboard.</dd>
+
+            <dt>CSV import in a single dialog, not a wizard</dt>
+            <dd>The preview table's column headings <em>are</em> the mapping dropdowns, the
+              separator is detected, and the status line runs the real parse as you change
+              things — it promises <code>Will import 74 of 76 rows</code> before you press the
+              button. An import can replace the open list or append to it.</dd>
+
+            <dt>Open, save, save as, new</dt>
+            <dd>With unsaved-changes prompts throughout, and output byte-identical to
+              StickyWords 2's.</dd>
+
+            <dt>Per-list settings travel inside the file</dt>
+            <dd>A list shared with someone else arrives already tuned.</dd>
+          </dl>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <svg aria-hidden="true"><use href="#i-desktop"/></svg>
+            <h3>Desktop integration</h3>
+          </div>
+          <dl>
+            <dt>Tray icon</dt>
+            <dd>The note is frameless and off the taskbar, so the icon is the app's other
+              handle. Left-click brings a note dragged off-screen back into view; the
+              right-click menu mirrors the toolbar.</dd>
+
+            <dt>Start with Windows</dt>
+            <dd>From the Options menu, written straight to the registry so it can never go
+              stale against a file.</dd>
+
+            <dt>Reopens your last list</dt>
+            <dd>On launch, or one passed on the command line.</dd>
+
+            <dt>One instance only</dt>
+            <dd>A second launch focuses the running note instead of opening a second one.</dd>
+
+            <dt>Per-word display counts</dt>
+            <dd>They accumulate across sessions, keyed so that fixing a typo does not orphan a
+              word's history.</dd>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ screenshots ============ -->
+  <section id="shots">
+    <div class="wrap">
+      <p class="eyebrow">A look inside</p>
+      <h2>Screenshots</h2>
+      <p class="lede">Every screen carries the colour scheme you picked for the note.</p>
+
+      <div class="shots">
+
+        <figure class="shot" style="--ar: 16 / 10">
+          <!-- Replace the div below with:
+               <img src="assets/img/shot-wordlist.png" alt="The StickyWords word list window, a grid of words being edited in place" width="1280" height="800"> -->
+          <div class="shot-ph"><strong>assets/img/shot-wordlist.png</strong>1280 × 800</div>
+          <figcaption>The word list — every cell edited in place, with a filter box for
+            finding one row in a long list.</figcaption>
+        </figure>
+
+        <figure class="shot" style="--ar: 16 / 10">
+          <!-- Replace the div below with:
+               <img src="assets/img/shot-csv.png" alt="The CSV import dialog, its preview table headings doubling as mapping dropdowns" width="1280" height="800"> -->
+          <div class="shot-ph"><strong>assets/img/shot-csv.png</strong>1280 × 800</div>
+          <figcaption>CSV import — the preview headings are the mapping dropdowns, and the
+            status line counts the rows that will actually land.</figcaption>
+        </figure>
+
+        <figure class="shot" style="--ar: 16 / 10">
+          <!-- Replace the div below with:
+               <img src="assets/img/shot-languages.png" alt="The language picker showing which of the 184 languages have a voice installed" width="1280" height="800"> -->
+          <div class="shot-ph"><strong>assets/img/shot-languages.png</strong>1280 × 800</div>
+          <figcaption>184 languages to label a list with — the picker marks which ones your
+            machine can already speak.</figcaption>
+        </figure>
+
+        <figure class="shot" style="--ar: 16 / 10">
+          <!-- Replace the div below with:
+               <img src="assets/img/shot-schemes.png" alt="The note in the Amber, Mint and Slate colour schemes side by side" width="1280" height="800"> -->
+          <div class="shot-ph"><strong>assets/img/shot-schemes.png</strong>1280 × 800</div>
+          <figcaption>Amber, Mint, Slate.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ word lists / format ============ -->
+  <section id="lists">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Your words, your files</p>
+        <h2>One list is one small file you own.</h2>
+        <p>A word list is a <code>.sws</code> file: plain JSON holding a <code>settings</code>
+          object with that list's display preferences, and a <code>words</code> array. You can
+          read it, diff it, keep it in a folder you back up, or email it to someone else.</p>
+        <p>Empty values are left out rather than written as <code>""</code>, and the encoder is
+          byte-exact — fixed key order, two-space indent, <code>\n</code> endings.</p>
+        <p>Fields the app does not recognise are <strong>kept and written back</strong>, so a
+          list touched by a newer version does not come out stripped. That is why the format is
+          JSON: through StickyWords 2 it was XML, whose attributes can only hold flat text, and
+          anything worth adding next — tags, several meanings, example sentences, review
+          scheduling — is a list or an object.</p>
+        <p class="muted" style="font-size:.92rem">StickyWords 3 cannot read the old XML lists.</p>
+      </div>
+
+      <div class="codebox">
+        <div class="codebar">spanish20.sws</div>
+<pre><code>{
+  <span class="tk-k">"version"</span><span class="tk-p">:</span> <span class="tk-n">1</span><span class="tk-p">,</span>
+  <span class="tk-k">"settings"</span><span class="tk-p">:</span> {
+    <span class="tk-k">"lang1"</span><span class="tk-p">:</span> <span class="tk-s">"es"</span><span class="tk-p">,</span>
+    <span class="tk-k">"lang2"</span><span class="tk-p">:</span> <span class="tk-s">"en"</span><span class="tk-p">,</span>
+    <span class="tk-k">"showPron"</span><span class="tk-p">:</span> <span class="tk-l">true</span><span class="tk-p">,</span>
+    <span class="tk-k">"meanFirst"</span><span class="tk-p">:</span> <span class="tk-l">false</span><span class="tk-p">,</span>
+    <span class="tk-k">"randomWord"</span><span class="tk-p">:</span> <span class="tk-l">false</span><span class="tk-p">,</span>
+    <span class="tk-k">"waitForMean"</span><span class="tk-p">:</span> <span class="tk-l">false</span><span class="tk-p">,</span>
+    <span class="tk-k">"delaySeconds"</span><span class="tk-p">:</span> <span class="tk-n">3</span>
+  }<span class="tk-p">,</span>
+  <span class="tk-k">"words"</span><span class="tk-p">:</span> [
+    {
+      <span class="tk-k">"word"</span><span class="tk-p">:</span> <span class="tk-s">"¡Buenos días!"</span><span class="tk-p">,</span>
+      <span class="tk-k">"pronunciation"</span><span class="tk-p">:</span> <span class="tk-s">"BWAY-nos DEE-as"</span><span class="tk-p">,</span>
+      <span class="tk-k">"meaning"</span><span class="tk-p">:</span> <span class="tk-s">"Good morning!"</span><span class="tk-p">,</span>
+      <span class="tk-k">"active"</span><span class="tk-p">:</span> <span class="tk-l">true</span>
+    }
+  ]
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ where data lives ============ -->
+  <section id="data">
+    <div class="wrap">
+      <p class="eyebrow">Where your data lives</p>
+      <h2>On your machine, and nowhere else.</h2>
+      <p class="lede">Everything the app remembers sits in three files under
+        <code>%APPDATA%\StickyWords\</code>. Word lists themselves live wherever you keep them.</p>
+
+      <div class="scroll">
+        <table>
+          <thead><tr><th>File</th><th>Holds</th></tr></thead>
+          <tbody>
+            <tr><td><code>settings.json</code></td><td>Window position, opacity, colour scheme, last list, and the settings with no menu entry</td></tr>
+            <tr><td><code>statistics.json</code></td><td>How often each word has been shown, across every session</td></tr>
+            <tr><td><code>StickyWords.log</code></td><td>The diagnostic log, plus <code>StickyWords.log.1</code> once it rotates at 1 MiB</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="margin-top:22px">No account, no cloud, no sync and no telemetry — none of it is
+        sent anywhere. <a href="privacy/">Read the privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ shortcuts ============ -->
+  <section id="keys">
+    <div class="wrap">
+      <p class="eyebrow">Keyboard</p>
+      <h2>Shortcuts in the word list window</h2>
+
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Key</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>N</kbd> / <kbd>Ctrl</kbd> + <kbd>O</kbd></td><td>New list / open</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd> / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></td><td>Save / save as</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td><td>Jump to the filter box</td></tr>
+            <tr><td><kbd>Insert</kbd> / <kbd>Delete</kbd></td><td>Add / remove a word</td></tr>
+            <tr><td><kbd>Ctrl</kbd> + <kbd>Space</kbd></td><td>Pronounce the selected word</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Close the window</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ heritage ============ -->
+  <section id="history">
+    <div class="wrap">
+      <p class="eyebrow">Since 1998</p>
+      <h2>The third time around.</h2>
+      <div class="timeline">
+        <div class="era">
+          <div class="yr">1998</div>
+          <p>The original StickyWords. One note, one list, one idea that turned out to be
+            worth keeping.</p>
+        </div>
+        <div class="era">
+          <div class="yr">2019</div>
+          <p>StickyWords 2, a Free Pascal application. Its word lists are still written
+            byte-identically today.</p>
+        </div>
+        <div class="era">
+          <div class="yr">2026</div>
+          <p>StickyWords 3, rewritten in Flutter: a new file format, real voice support,
+            and the same small note.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ download ============ -->
+  <section id="download" class="download">
+    <div class="wrap">
+      <p class="eyebrow">Download</p>
+      <h2>Put a note in the corner of your screen.</h2>
+      <p class="lede center">Windows 10 or 11. Nothing else — no account, no runtime to install,
+        and no network connection.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://github.com/64715/stickywords-web/releases/latest">
+          <svg width="16" height="16" aria-hidden="true"><use href="#i-download"/></svg>
+          Download for Windows
+        </a>
+        <!-- TODO: paste the Microsoft Store listing URL into href, then delete
+             aria-disabled and the is-pending class to switch the button on. -->
+        <a class="btn btn-secondary is-pending" href="#" aria-disabled="true">
+          <svg width="16" height="16" aria-hidden="true"><use href="#i-store"/></svg>
+          Microsoft Store
+        </a>
+      </div>
+      <p class="btn-note">Version 3.0.0. The Microsoft&nbsp;Store listing is on its way.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <p>StickyWords 3.0.0, by Gytis Liutkus.</p>
+      <p class="foot-credit">The note mark is licensed from Freepik under their premium terms.</p>
+    </div>
+    <nav class="foot-links">
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+      <a href="privacy/">Privacy</a>
+      <a href="https://github.com/64715/stickywords-web">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/note.js"></script>
+</body>
+</html>

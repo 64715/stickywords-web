@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>StickyWords 3 — a small note that quietly teaches you words</title>
-<meta name="description" content="An always-on-top note for the Windows desktop that cycles through the words you are learning and, on request, says them out loud. Your own lists, your own files. No account, no cloud, no telemetry.">
+<title>StickyWords — an always-on-top note for whatever you're learning</title>
+<meta name="description" content="A small always-on-top note that shows the next thing you are learning every few seconds while you work. Spanish for a holiday, terms for an exam, the vocabulary a new job assumes — your own lists, spoken aloud by the voices Windows already has. Free.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/site.css">
 <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14120e" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="StickyWords 3">
-<meta property="og:description" content="A small always-on-top note for the Windows desktop that quietly cycles through the words you are learning — and, on request, says them out loud.">
+<meta property="og:title" content="StickyWords">
+<meta property="og:description" content="A small always-on-top note that shows the next thing you are learning every few seconds while you work. Your own lists, spoken aloud by the voices Windows already has. Free, and it works offline.">
 <meta property="og:url" content="https://stickywords.firstpush.dev/">
 <!-- TODO: add a 1200x630 social card at assets/img/og.png, then uncomment:
 <meta property="og:image" content="https://stickywords.firstpush.dev/assets/img/og.png"> -->
@@ -60,23 +60,26 @@
     <div class="wrap">
       <div>
         <p class="version-pill">Version 3.0.0 · Windows</p>
-        <h1>The words you are learning, on the screen you are already looking at.</h1>
-        <p class="lede">A small always-on-top note for the Windows desktop that quietly
-          cycles through the words you are learning — and, on request, says them out loud.</p>
+        <h1>Whatever you're learning, on the screen you're already looking at.</h1>
+        <p class="lede">A small always-on-top note that shows the next thing you are learning
+          every few seconds while you work. Spanish for a holiday, terms for an exam, the
+          vocabulary a new job assumes — your own lists, spoken aloud by the voices Windows
+          already has.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://github.com/64715/stickywords-web/releases/latest">
-            <svg width="16" height="16" aria-hidden="true"><use href="#i-download"/></svg>
-            Download for Windows
-          </a>
           <!-- TODO: paste the Microsoft Store listing URL into href, then delete
                aria-disabled and the is-pending class to switch the button on. -->
-          <a class="btn btn-secondary is-pending" href="#" aria-disabled="true">
+          <a class="btn btn-primary is-pending" href="#" aria-disabled="true">
             <svg width="16" height="16" aria-hidden="true"><use href="#i-store"/></svg>
-            Microsoft Store
+            Get it from the Microsoft Store
+          </a>
+          <a class="btn btn-secondary" href="https://github.com/64715/stickywords-web/releases/latest">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-download"/></svg>
+            Download the zip
           </a>
         </div>
-        <p class="btn-note">Windows 10 or 11. No account, no cloud, no telemetry.<br>
-          The Microsoft&nbsp;Store listing is on its way.</p>
+        <p class="btn-note">Free — no ads, no trial, no subscription. Windows 10 or 11.
+          Works offline, no account.<br>
+          The Microsoft&nbsp;Store listing is on its way; the zip is the same build.</p>
       </div>
 
       <!-- the note, cycling -->
@@ -109,13 +112,99 @@
   <section class="premise">
     <div class="wrap">
       <p class="eyebrow">The premise</p>
-      <p class="big">Ambient exposure rather than deliberate study.</p>
-      <p class="lede center">There is no session to start, nothing to grade and no streak to keep.
-        The note occupies a corner of a screen you are already looking at for other reasons,
-        and shows the next word every few seconds while you work.</p>
+      <p class="big">No sessions, no streaks, no account.</p>
+      <p class="lede center">Ambient exposure rather than deliberate study. There is no session
+        to start, nothing to grade and no streak to keep. The note occupies a corner of a screen
+        you are already looking at for other reasons, and shows the next item every few seconds
+        while you work.</p>
       <p class="lede center" style="margin-top:1em">That premise drives every interface decision: the window has no title bar,
         its toolbar appears only on hover, and the rotation pauses by itself when the pointer
-        comes near — so a word never changes out from under you mid-read.</p>
+        comes near — so an item never changes out from under you mid-read.</p>
+    </div>
+  </section>
+
+  <!-- ============ what you can learn ============ -->
+  <section id="learn">
+    <div class="wrap">
+      <p class="eyebrow">Not only languages</p>
+      <h2>Anything that comes in pairs.</h2>
+      <p class="lede">A list is a set of pairs, and the note shows you one side and then the
+        other. Set it to hold the answer back for a beat and it quizzes you. Leave both
+        showing and it simply keeps the material in front of your eyes, which is most of
+        the battle.</p>
+
+      <div class="pairs">
+        <div class="pair"><b>la biblioteca</b> <span class="arrow">→</span> <span class="ans">the library</span></div>
+        <div class="pair"><b>Lisbon</b> <span class="arrow">→</span> <span class="ans">Portugal</span></div>
+        <div class="pair"><b>1969</b> <span class="arrow">→</span> <span class="ans">the Moon landing</span></div>
+        <div class="pair"><b>F = ma</b> <span class="arrow">→</span> <span class="ans">force equals mass times acceleration</span></div>
+      </div>
+
+      <h3 style="margin-top:44px">Who puts one in the corner of their screen</h3>
+
+      <div class="who">
+        <div class="who-card">
+          <h3>Three weeks before the flight</h3>
+          <p>A holiday, and a wish not to point at the menu. Fifty words, high motivation,
+            a hard deadline — and if you never open it again after the trip, the trip
+            worked.</p>
+          <span class="horizon">Weeks</span>
+        </div>
+        <div class="who-card">
+          <h3>The exam candidate</h3>
+          <p>Not a language at all. Cases and what they decided, dates and what happened,
+            drug names and what they do. Two things that have to be linked, and a screen
+            already open to revise on.</p>
+          <span class="horizon">A term</span>
+        </div>
+        <div class="who-card">
+          <h3>The vocabulary a job assumes</h3>
+          <p>A new industry whose jargon everyone else already speaks, or the business
+            register of a language you can order coffee in but not run a meeting in.
+            Learned in the same hours as the work.</p>
+          <span class="horizon">Months</span>
+        </div>
+        <div class="who-card">
+          <h3>The one who stays</h3>
+          <p>Living abroad, a second language at home, a heritage language half-remembered.
+            No deadline, so no urgency — which is exactly why an ambient note is the only
+            thing that survives here.</p>
+          <span class="horizon">Years</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ starter lists ============ -->
+  <section id="starter">
+    <div class="wrap">
+      <p class="eyebrow">Something to read on day one</p>
+      <h2>It does not arrive empty.</h2>
+      <p class="lede">Four lists are built in, so there is something rotating the moment you
+        open it — and between them they show what the note is actually for.</p>
+
+      <div class="starters">
+        <div class="starter">
+          <div class="name">Europe: countries and capitals <span class="count">44</span></div>
+          <p>Pure facts, and the fastest proof that this is not only a language app.</p>
+        </div>
+        <div class="starter">
+          <div class="name">US states and capitals <span class="count">50</span></div>
+          <p>The same, for anyone who was made to learn them once and has since lost a few.</p>
+        </div>
+        <div class="starter">
+          <div class="name">Spanish for a trip <span class="count">~60</span></div>
+          <p>The phrases you actually need in a week abroad, with a plain respelling to say
+            them by.</p>
+        </div>
+        <div class="starter">
+          <div class="name">Italian for a trip <span class="count">~60</span></div>
+          <p>Same person, different flight.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:24px">Then replace them. The built-in lists are ordinary files
+        like any other — edit them, or start your own.</p>
     </div>
   </section>
 
@@ -124,8 +213,9 @@
     <div class="wrap">
       <p class="eyebrow">What it does</p>
       <h2>Small enough to ignore, present enough to work.</h2>
-      <p class="lede">StickyWords ships no curriculum. It drills the list you built from a class,
-        a novel, a job or an exam.</p>
+      <p class="lede">Most vocabulary apps hand you a list somebody else chose. StickyWords
+        shows what you are actually learning — from a class, a novel, a job or an exam. And it
+        is free: no ads, no trial, no in-app purchases and no subscription.</p>
 
       <div class="cards">
 
@@ -140,17 +230,17 @@
               Alt-Tab so it stays clear of real work.</dd>
 
             <dt>Timed rotation</dt>
-            <dd>A word holds for 1, 2, 3, 5, 8 or 13 seconds, in list order or at random,
-              drawing only from the words still active.</dd>
+            <dd>An item holds for 1, 2, 3, 5, 8 or 13 seconds, in list order or at random,
+              drawing only from the ones still active.</dd>
 
             <dt>Two-stage reveal</dt>
-            <dd>The word can appear alone first, its meaning following halfway through its
+            <dd>The prompt can appear alone first, the answer following halfway through its
               turn — the closest the app comes to testing recall. <em>Meaning first</em>
-              inverts the prompt, so you recall the foreign word rather than read it.</dd>
+              inverts it, so you recall the word rather than read it.</dd>
 
-            <dt>Retiring a word</dt>
+            <dt>Retiring what you know</dt>
             <dd>One click deactivates whatever is showing and writes the file immediately.
-              The word stays in the list but leaves the rotation.</dd>
+              It stays in the list but leaves the rotation.</dd>
 
             <dt>Drag with edge snap</dt>
             <dd>The note snaps to the edges of the work area, is clamped back on screen if a
@@ -169,9 +259,9 @@
           </div>
           <dl>
             <dt>The voices already on your PC</dt>
-            <dd>Speech comes from SAPI 5, reading <em>both</em> voice registries — so the voices
-              Windows Settings installs are found alongside the classic ones. Nothing is
-              synthesised anywhere but on your own machine.</dd>
+            <dd>Speech is produced by Windows itself, through SAPI 5, reading <em>both</em>
+              voice registries — so the voices Windows Settings installs are found alongside
+              the classic ones.</dd>
 
             <dt>A missing voice is an offer, not a dead button</dt>
             <dd>When nothing on the machine can say the list's language, the Pronounce button
@@ -339,24 +429,18 @@
   <!-- ============ where data lives ============ -->
   <section id="data">
     <div class="wrap">
-      <p class="eyebrow">Where your data lives</p>
-      <h2>On your machine, and nowhere else.</h2>
-      <p class="lede">Everything the app remembers sits in three files under
-        <code>%APPDATA%\StickyWords\</code>. Word lists themselves live wherever you keep them.</p>
+      <p class="eyebrow">Your files stay yours</p>
+      <h2>Lists are ordinary files on your own disk.</h2>
+      <p class="lede">Copy them, back them up, email one to a classmate, or keep them in a
+        folder that syncs. Nothing is locked to this machine or to this app.</p>
 
-      <div class="scroll">
-        <table>
-          <thead><tr><th>File</th><th>Holds</th></tr></thead>
-          <tbody>
-            <tr><td><code>settings.json</code></td><td>Window position, opacity, colour scheme, last list, and the settings with no menu entry</td></tr>
-            <tr><td><code>statistics.json</code></td><td>How often each word has been shown, across every session</td></tr>
-            <tr><td><code>StickyWords.log</code></td><td>The diagnostic log, plus <code>StickyWords.log.1</code> once it rotates at 1 MiB</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>StickyWords works offline. There is no account and no sign-up, your word lists are
+        ordinary files on your own disk, and StickyWords does not collect analytics or usage
+        data. It remembers your own settings — where the note sits, its opacity and colour
+        scheme — on your machine, and that is the whole of it.</p>
 
-      <p style="margin-top:22px">No account, no cloud, no sync and no telemetry — none of it is
-        sent anywhere. <a href="privacy/">Read the privacy policy</a>.</p>
+      <p><a href="privacy/">Read the privacy policy</a> for exactly what is recorded and what
+        is not.</p>
     </div>
   </section>
 
@@ -412,21 +496,22 @@
     <div class="wrap">
       <p class="eyebrow">Download</p>
       <h2>Put a note in the corner of your screen.</h2>
-      <p class="lede center">Windows 10 or 11. Nothing else — no account, no runtime to install,
-        and no network connection.</p>
+      <p class="lede center">Free. Windows 10 or 11, and nothing else — no account, no runtime
+        to install, and it works offline.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://github.com/64715/stickywords-web/releases/latest">
-          <svg width="16" height="16" aria-hidden="true"><use href="#i-download"/></svg>
-          Download for Windows
-        </a>
         <!-- TODO: paste the Microsoft Store listing URL into href, then delete
              aria-disabled and the is-pending class to switch the button on. -->
-        <a class="btn btn-secondary is-pending" href="#" aria-disabled="true">
+        <a class="btn btn-primary is-pending" href="#" aria-disabled="true">
           <svg width="16" height="16" aria-hidden="true"><use href="#i-store"/></svg>
-          Microsoft Store
+          Get it from the Microsoft Store
+        </a>
+        <a class="btn btn-secondary" href="https://github.com/64715/stickywords-web/releases/latest">
+          <svg width="16" height="16" aria-hidden="true"><use href="#i-download"/></svg>
+          Download the zip
         </a>
       </div>
-      <p class="btn-note">Version 3.0.0. The Microsoft&nbsp;Store listing is on its way.</p>
+      <p class="btn-note">Version 3.0.0. The Microsoft&nbsp;Store listing is on its way;
+        the zip is the same build, portable, with no installer.</p>
     </div>
   </section>
 
@@ -435,8 +520,9 @@
 <footer class="site-foot">
   <div class="wrap">
     <div>
-      <p>StickyWords 3.0.0, by Gytis Liutkus.</p>
-      <p class="foot-credit">No account, no cloud, no telemetry.</p>
+      <p>StickyWords 3.0.0 &middot; &copy; 2026 Gytis Liutkus</p>
+      <p class="foot-credit">Free, and it works offline. Support and questions:
+        <a href="mailto:hello@firstpush.dev">hello@firstpush.dev</a></p>
     </div>
     <nav class="foot-links">
       <a href="#features">Features</a>

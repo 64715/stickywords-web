@@ -6,11 +6,12 @@
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var words = [
-    ['¡Buenos días!', 'BWAY-nos DEE-as',      'Good morning!'],
-    ['la biblioteca',           'la bee-blyoh-TEH-ka',  'the library'],
-    ['aprender',                'ah-pren-DEHR',         'to learn'],
-    ['el atardecer',            'el ah-tar-deh-SEHR',   'the dusk'],
-    ['todavía',            'toh-dah-VEE-ah',       'still, yet']
+    ['¡Buenos días!', 'BWAY-nos DEE-as',     'Good morning!'],
+    ['Lisbon',                 '',                     'Portugal'],
+    ['la biblioteca',          'la bee-blyoh-TEH-ka',  'the library'],
+    ['1969',                   '',                     'the Moon landing'],
+    ['aprender',               'ah-pren-DEHR',         'to learn'],
+    ['todavía',           'toh-dah-VEE-ah',       'still, yet']
   ];
 
   var el = {
@@ -37,7 +38,8 @@
     stage.dataset.swapping = '1';
     setTimeout(function () {
       el.word.textContent = w[0];
-      el.pron.textContent = '[' + w[1] + ']';
+      // a list of facts has no pronunciation column; keep the row's space, drop the brackets
+      el.pron.textContent = w[1] ? '[' + w[1] + ']' : '';
       el.mean.textContent = w[2];
       stage.dataset.swapping = '0';
     }, 320);

@@ -1,4 +1,4 @@
-/* StickyWords 3 — one stylesheet, no dependencies, no webfonts. */
+/* StickyWords 3 - one stylesheet, no dependencies, no webfonts. */
 
 /* ---------- palette ---------- */
 :root {
@@ -178,7 +178,7 @@ section + section { border-top: 1px solid var(--line); }
   display: grid; grid-template-rows: 8.5cqw 1fr; overflow: hidden;
 }
 
-/* toolbar: reserved space always, ink only on hover — as in the app */
+/* toolbar: reserved space always, ink only on hover - as in the app */
 .note-bar {
   display: flex; align-items: center; justify-content: center; gap: 2.1cqw;
   padding-top: 1.6cqw; opacity: 0; transition: opacity .16s ease;
@@ -324,7 +324,7 @@ kbd {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 
-/* pending CTA — remove .is-pending once the Store listing is live */
+/* pending CTA - remove .is-pending once the Store listing is live */
 .btn.is-pending { opacity: .6; pointer-events: none; }
 
 /* ---------- pairs (what a list is) ---------- */

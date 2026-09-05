@@ -3,7 +3,7 @@
 The website for **StickyWords 3**, served by GitHub Pages at
 [stickywords.firstpush.dev](https://stickywords.firstpush.dev).
 
-Plain static HTML and CSS — no build step, no dependencies, no package manager. Edit a
+Plain static HTML and CSS - no build step, no dependencies, no package manager. Edit a
 file, commit, push; GitHub Pages serves it.
 
 ```
@@ -48,7 +48,13 @@ newest release and needs no editing when you ship a new version.
 
 To publish a build: **Releases → Draft a new release**, tag it `v3.0.0`, and attach the
 zip as a release asset. Release assets live outside the git history (up to 2 GB each), so
-the app itself can stay in its own repository — only the built zip is uploaded here.
+the app itself can stay in its own repository - only the built zip is uploaded here.
+
+Then bump `latest.json` in the same change. The downloaded build asks this site for that
+file about once a day and compares the version in it with its own, so a release that
+tags the zip but leaves `latest.json` behind tells every existing user they are already
+up to date. Its `url` points at the releases page and needs no editing; only `version`
+and `notes` change per release. (The Store build ignores the file - Windows updates it.)
 
 ## The Microsoft Store button
 

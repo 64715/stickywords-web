@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy policy — StickyWords 3</title>
+<title>Privacy policy - StickyWords 3</title>
 <meta name="description" content="What StickyWords 3 records, what it does not, and what happens when you press Pronounce. Written in the present tense about the version you can install today.">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/css/site.css">
 <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14120e" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Privacy policy — StickyWords 3">
+<meta property="og:title" content="Privacy policy - StickyWords 3">
 <meta property="og:description" content="What StickyWords 3 records, what it does not, and what happens when you press Pronounce.">
 <meta property="og:url" content="https://stickywords.firstpush.dev/privacy/">
 </head>
@@ -41,7 +41,7 @@
       Back to StickyWords
     </a>
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated 30 August 2026 · Applies to StickyWords 3.0.0 for Windows
+    <p class="updated">Last updated 5 September 2026 · Applies to StickyWords 3.0.0 for Windows
       and to this website.</p>
   </div>
 
@@ -49,8 +49,9 @@
     <div class="wrap prose">
 
       <div class="callout">
-        <p><strong>The short version.</strong> StickyWords works offline. There is no account and
-          no sign-up, your word lists are ordinary files on your own disk, and StickyWords does
+        <p><strong>The short version.</strong> StickyWords works offline, and the only thing it
+          ever asks the network is whether a newer version exists. There is no account and no
+          sign-up, your word lists are ordinary files on your own disk, and StickyWords does
           not collect analytics or usage data. It has no telemetry, no crash reporting and no
           advertising.</p>
       </div>
@@ -81,10 +82,12 @@
 
       <h2 id="stores">What the app records</h2>
       <p>Everything StickyWords remembers between runs stays in your own Windows user profile,
-        on the machine you installed it on. There are three things, and none of them is
-        transmitted anywhere:</p>
+        on the machine you installed it on - three files in
+        <code>%APPDATA%\StickyWords\</code>, or, if you installed from the Microsoft Store, the
+        same three in that package's own folder under <code>%LOCALAPPDATA%\Packages\</code>.
+        None of them is transmitted anywhere:</p>
       <ul>
-        <li><strong>Your display preferences</strong> — where the note sits on screen, its
+        <li><strong>Your display preferences</strong> - where the note sits on screen, its
           opacity and colour scheme, and which word list you had open last.</li>
         <li><strong>How many times each item has been shown to you</strong>, accumulated across
           sessions. These are counts attached to your own words; there is nothing about you in
@@ -95,7 +98,7 @@
       </ul>
 
       <h2 id="lists">Your word lists</h2>
-      <p>Word lists are <code>.sws</code> files that you create and save wherever you choose —
+      <p>Word lists are <code>.sws</code> files that you create and save wherever you choose -
         a documents folder, a USB stick, a synced folder if that is what you want. StickyWords
         reads and writes the file you point it at and does nothing else with it. Fields it does
         not recognise are preserved and written back untouched.</p>
@@ -113,18 +116,36 @@
       <h2 id="speech">Pronunciation</h2>
       <p>When you press Pronounce, the word is spoken by SAPI 5 using a voice that is already
         installed on your PC. The audio is synthesised locally, by Windows, on your own machine.
-        No text — not the word, not its meaning, not the language of the list — is sent to any
+        No text - not the word, not its meaning, not the language of the list - is sent to any
         server in order to be spoken.</p>
       <p>If no installed voice can speak the list's language, the button does not simply fail:
         it turns into an install icon and opens the Speech page of Windows Settings, where you
         can add a voice. That opens a local Windows settings page; StickyWords is not involved
         in whatever you do there, and Microsoft's own terms and privacy statement govern any
         voice you choose to download.</p>
+
       <h2 id="network">Network connections</h2>
-      <p>StickyWords 3.0.0 works offline. It opens no network connections of its own: it does
-        not check for updates, does not phone home, does not fetch content and does not report
-        errors. You can run it on a machine that has never been online, and nothing about it
-        degrades.</p>
+      <p>StickyWords 3.0.0 makes one network request, and only in the build you download as a
+        zip. About once a day it asks this website for
+        <code>https://stickywords.firstpush.dev/latest.json</code> - a small static file naming
+        the current version - and compares the version in it with its own, so that it can tell
+        you when a newer one exists.</p>
+      <p>That request is a plain GET for a fixed file. Nothing is sent about you: no
+        identifier, no account, no query string and no request body, and nothing at all about
+        your word lists, your settings or how you have been using the program. The reply is
+        read, compared, and discarded.</p>
+      <p>It is still a web request, and like any web request it reaches the server that answers
+        it - GitHub Pages, which serves this site and processes an IP address and browser user
+        agent in the course of doing so, as any web server must. That processing is GitHub's
+        and is described under <a href="#website">this website</a> below; I have no access to
+        those logs, and there is nothing in the request that would distinguish it from someone
+        opening this page in a browser.</p>
+      <p>The Microsoft Store build does not make this request at all - Windows keeps Store apps
+        up to date itself, so there is nothing for the app to check.</p>
+      <p>Beyond that, nothing touches the network. StickyWords does not phone home, does not
+        fetch content, does not report errors and has no telemetry of any kind. You can run it
+        on a machine that has never been online and nothing about it degrades; the only thing
+        you lose is being told that a new version came out.</p>
       <p>Two actions deliberately hand off to other software on your computer: the Pronounce
         button opens Windows' Speech settings when a voice is missing, and the About box opens
         this website in your default browser. In both cases StickyWords asks Windows to open
@@ -133,7 +154,7 @@
       <h2 id="getting">Getting StickyWords</h2>
       <p>Installing from the Microsoft Store is a transaction between you and Microsoft, under
         Microsoft's own privacy statement; downloading the zip is a request to GitHub, under
-        GitHub's. Either way I receive no information about who installed it — no names, no
+        GitHub's. Either way I receive no information about who installed it - no names, no
         addresses and no counts I could tie to a person. Whatever aggregate figures the Store
         eventually shows me are Microsoft's, and describe installs rather than people.</p>
 
@@ -141,7 +162,7 @@
       <p>To be explicit, StickyWords does not collect, generate or transmit any of the
         following:</p>
       <ul>
-        <li>Names, email addresses, accounts or licence keys — there is no sign-up of any kind.</li>
+        <li>Names, email addresses, accounts or licence keys - there is no sign-up of any kind.</li>
         <li>Usage analytics, event tracking, feature-usage metrics or session recording.</li>
         <li>Crash reports or automatic diagnostics.</li>
         <li>Device identifiers, advertising identifiers, IP addresses or location.</li>
@@ -150,6 +171,12 @@
       </ul>
       <p>There are no cookies, no third-party SDKs and no advertising libraries in the
         application.</p>
+      <p>One clarification on IP addresses in that list. StickyWords neither collects nor
+        transmits one, but the daily version check described under
+        <a href="#network">network connections</a> is an ordinary web request, and every web
+        request necessarily carries an IP address to the server that answers it. That is the
+        whole of it - nothing is attached to the request that would identify you, and no record
+        of it comes back to me.</p>
 
       <h2 id="sharing">Sharing and selling</h2>
       <p>Your data is not shared with anyone, sold to anyone, or used to train anything. That
@@ -175,7 +202,7 @@
 
       <h2 id="website">This website</h2>
       <p>This site is a set of static pages hosted on GitHub Pages. It sets no cookies, runs no
-        analytics, and loads no third-party fonts, scripts, images or trackers — every file the
+        analytics, and loads no third-party fonts, scripts, images or trackers - every file the
         page requests comes from this domain. Nothing you do here is recorded by me.</p>
       <p>GitHub serves the pages, and in the course of doing so its servers process technical
         information such as your IP address and browser user agent, as any web server must.
@@ -187,16 +214,19 @@
       <p>The download button points to a release file hosted on GitHub; following it is a
         request to GitHub, on the same terms. The Microsoft Store button, once it is live, takes
         you to Microsoft, whose own privacy statement applies from that point on.</p>
+      <p>The app's daily version check asks this same site for a file, so it reaches the same
+        servers on the same terms as a browser would. It is described in full under
+        <a href="#network">network connections</a>.</p>
 
       <h2 id="children">Children</h2>
       <p>StickyWords is suitable for learners of any age and collects nothing from anyone,
         children included. Because no personal data is gathered at all, there is no age gate and
-        no parental-consent mechanism — there would be nothing for either to protect.</p>
+        no parental-consent mechanism - there would be nothing for either to protect.</p>
 
       <h2 id="changes">Changes to this policy, and how to reach me</h2>
       <p>If the behaviour described here changes, this page changes with it and the date at the
-        top is updated. Material changes — anything that would cause data to leave your computer
-        — will be described in the release notes of the version that introduces them, and the
+        top is updated. Material changes - anything that would cause data to leave your computer
+        - will be described in the release notes of the version that introduces them, and the
         feature will be off until you switch it on.</p>
       <p>Questions about this policy, or about anything StickyWords does with your data, are
         welcome at <a href="mailto:hello@firstpush.dev">hello@firstpush.dev</a>.</p>
